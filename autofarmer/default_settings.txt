@@ -1,0 +1,296 @@
+-- configurable settings
+
+-- demand is the technic power consumption
+-- width_side are the amount of blocks to each side (+ it's own block thus the width of a farm is (2xside)+1 )
+-- length would be the length of the farm from the front side (face side)
+
+-- chance to plant, higher number is more delay
+autofarmer.planter_delay = 1 -- was 4
+
+-- LV planter settings
+autofarmer.LV_planter_demand = 6000
+autofarmer.LV_planter_width_side = 2
+autofarmer.LV_planter_length = 6
+
+-- MV planter settings
+autofarmer.MV_planter_demand = 11000
+autofarmer.MV_planter_width_side = 3
+autofarmer.MV_planter_length = 15
+
+-- HV planter settings
+autofarmer.HV_planter_demand = 22000
+-- farm size of HV planter is adaptable ingame
+
+
+
+-- Harvester Settings
+autofarmer.harvester_min_demand = 4000
+autofarmer.harvester_demand_per_node = 4
+
+-- delay is the time between possible harvest in seconds 
+-- (including randomness, unless set to 1 then every second harvest is checked)
+autofarmer.MV_harvester_delay = 1 -- was 5
+
+-- depth is how many blocks below the harvester will be harvested, default 1 so it can be stacked on planter
+autofarmer.MV_harvester_max_depth = 1
+
+
+-- PLANTER / HARVESTER allowed node settings
+
+-- add/remove new/custom mod plants below, keep the syntax [""] = "",
+-- inluding the comma
+-- names should be the following: ["full-name-in-game"] = "modname:plantname_1"
+-- note to add _1 to the plant for first stage unless they are trees
+autofarmer.seeds_nodes = {
+	["farming:seed_wheat"]= "farming:wheat_1",
+	["farming:seed_cotton"]= "farming:cotton_1",
+	["farming:seed_barley"]= "farming:barley_1",
+	
+	-- old deprecated?/legacy?
+	["farming:pumpkin_seed"]= "farming:pumpkin_1",
+	["farming:rhubarb_seed"]= "farming:rhubarb_1",
+	["farming:strawberry_seed"]="farming:strawberry_1",
+	["farming:potato_seed"]="farming:potato_1",
+	["farming:tomato_seed"]="farming:tomato_1",
+	["farming:orange_seed"]="farming:orange_1",
+	["farming:carrot_seed"]="farming:carrot_1",
+
+	-- added hemp
+	["hemp:seed_hemp"]="hemp:hemp_1",
+	
+	-- farming_plus changes?
+	["farming:blueberries"]="farming:blueberry_1",
+	["farming:cocoa_sapling"]="farming:cocoa_sapling",
+	["farming:coffee_beans"]="farming:coffee_1",
+	["farming:corn"]="farming:corn_1",
+	["farming:cucumber"]="farming:cucumber_1",
+	["farming:carrot"]="farming:carrot_1",
+	-- TODO: Add a slot for farming:trellis, and consume for each
+	-- grapes planted. For now, we just automagically appear a
+	-- trellis for each grapes.
+	["farming:grapes"]="farming:grapes_1",
+	["farming:melon_slice"]="farming:melon_1",
+	["farming:pumpkin"]="farming:pumpkin_1",
+	["farming:raspberries"]="farming:raspberry_1",
+	["farming:rhubarb"]="farming:rhubarb_1",
+	["farming:tomato"]="farming:tomato_1",
+	["farming:potato"]="farming:potato_1",
+	
+	-- Missing from farming
+	["farming:artichoke"]="farming:artichoke_1",
+	["farming:asparagus"]="farming:asparagus_1",
+	-- Beans grow on beanpoles. TODO: Add a slot for
+	-- farming:beanpole and consume for each beans planted.  For
+	-- now, we just automagically appear a beanpole for each
+	-- beans.
+	["farming:beans"]="farming:beanpole_1",
+	["farming:beetroot"]="farming:beetroot_1",
+	["farming:blackberry"]="farming:blackberry_1",
+	["farming:cabbage"]="farming:cabbage_1",
+	["farming:chili_pepper"]="farming:chili_1",
+	["farming:eggplant"]="farming:eggplant_1",
+	["farming:garlic_glove"]="farming:garlic_1",
+	["farming:ginger"]="farming:ginger_1",
+	["farming:seed_hemp"]="farming:hemp_1",
+	["farming:lettuce"]="farming:lettuce_1",
+	["farming:seed_mint"]="farming:mint_1",
+	["farming:onion"]="farming:onion_1",
+	["farming:seed_oat"]="farming:oat_1",
+	["farming:rye"]="farming:rye_1",
+	["farming:oat"]="farming:oat_1",
+	["farming:seed_rice"]="farming:rice_1",
+	["farming:parsley"]="farming:parsley_1",
+	["farming:soy_pod"]="farming:soy_1",
+	["farming:spinach"]="farming:spinach_1",
+	["ethereal:strawberry"]="ethereal:strawberry_1",
+	["farming:seed_sunflower"]="farming:sunflower_1",
+	["farming:vanilla"]="farming:vanilla_1",
+
+
+	-- trees usually keep their same name (sapling -> sapling)
+	["default:sapling"] = "default:sapling",
+	["default:junglesapling"] = "default:junglesapling",
+	["default:pine_sapling"] = "default:pine_sapling",
+	["default:acacia_sapling"] = "default:acacia_sapling",
+	["default:aspen_sapling"] = "default:aspen_sapling",
+
+	["moretrees:birch_sapling"]="moretrees:birch_sapling",
+	["moretrees:spruce_sapling"]="moretrees:spruce_sapling",
+	["moretrees:fir_sapling"]="moretrees:fir_sapling",
+	["moretrees:beech_sapling"]="moretrees:beech_sapling",
+	["moretrees:apple_tree_sapling"]="moretrees:apple_tree_sapling",
+	["moretrees:oak_sapling"]="moretrees:oak_sapling",
+	["moretrees:sequoia_sapling"]="moretrees:sequoia_sapling",
+	["moretrees:palm_sapling"]="moretrees:palm_sapling",
+	["moretrees:pine_sapling"]="moretrees:pine_sapling",
+	["moretrees:willow_sapling"]="moretrees:willow_sapling",
+	["moretrees:rubber_tree_sapling"]="moretrees:rubber_tree_sapling",
+
+
+
+}
+-- END OF SEED_NODES
+
+
+-- HARVESTER ALLOWED NODES
+-- the number at the end is the full grown stage, differs from plant to plant, look for it in game
+autofarmer.harvester_dig_nodes = {
+	["farming:wheat_8"] = true,
+	["farming:cotton_8"] = true,
+	["farming:barley_7"] = true,
+
+	-- added hemp
+	["hemp:hemp_8"] = true,
+	
+	-- farming_plus/farming
+	["farming:tomato_8"] = true,
+	["farming:coffee_5"] = true,
+	["farming:corn_8"] = true,
+	["farming:pumpkin_8"] = true,
+	["farming:carrot_8"] = true,
+	["farming:melon_8"] = true,
+	["farming:cucumber_4"] = true,
+	["farming:raspberry_4"] = true,
+	["farming:blueberry_4"] = true,
+	["farming:potato_4"] = true,
+	["farming:rhubarb_4"] = true,
+	["farming:cocoa_4"] = true,
+
+	-- Missing from farming
+	["farming:artichoke_5"] = true,
+	["farming:asparagus_5"] = true,
+	["farming:beetroot_5"] = true,
+	["farming:blackberry_4"] = true,
+	["farming:cabbage_6"] = true,
+	["farming:chili_8"] = true,
+	["farming:eggplant_4"] = true,
+	["farming:garlic_5"] = true,
+	["farming:ginger_4"] = true,
+	["farming:hemp_8"] = true,
+	["farming:lettuce_5"] = true,
+	["farming:mint_4"] = true,
+	["farming:onion_5"] = true,
+	["farming:rye_3"] = true,
+	["farming:oat_8"] = true,
+	["farming:rice_8"] = true,
+	["farming:parsley_3"] = true,
+	["farming:soy_7"] = true,
+	["farming:spinach_4"] = true,
+	["ethereal:strawberry_8"] = true,
+	["farming:sunflower_8"] = true,
+	["farming:vanilla_8"] = true,
+
+	-- Things on trellis:
+	["farming:grapes_8"] = true,
+	-- Things on beanpole:
+	["farming:beanpole_5"] = true,
+
+	-- fruits from trees
+	["default:apple"] = true,
+	["moretrees:coconut"] = true,
+	["moretrees:fir_cone"] = true,
+	["moretrees:cedar_cone"] = true,
+	["moretrees:spruce_cone"] = true,
+	["moretrees:acorn"] =  true,
+
+	-- trees
+	["default:tree"] = true,
+	["default:acacia_tree"] = true,
+	["default:pine_tree"] = true,	
+	["default:aspen_tree"] = true,
+	["default:jungle_tree"] = false,	-- carries cocoa beans?
+
+	-- moretrees
+	-- don't cut fruit bearing trees? (yet..)
+	["moretrees:apple_tree_trunk"] = false,		-- apples 
+	["moretrees:palm_trunk"] = false,		-- coconuts
+	["moretrees:fir_trunk"] = false,		-- fir cones
+	["moretrees:cedar_trunk"] = false,		-- cedar cone
+	["moretrees:spruce_trunk"] = false,		-- spruce cone
+	["moretrees:oak_trunk"] = true,			-- acorn
+
+	["moretrees:jungletree_trunk"] = true,
+	["moretrees:rubber_tree_trunk"] = true,
+	["moretrees:birch_trunk"] = true,
+	["moretrees:willow_trunk"] = true,
+	["moretrees:beech_trunk"] = true,
+	["moretrees:sequoia_trunk"] = true,
+
+
+
+-- TODO add plantlife mod?, look for other farming mods
+
+	-- ["ferns:fern_trunk"] = true,
+	-- plantlife
+	--["bushes:blackberry_bush"] = true,
+	--["bushes:raspberry_bush"] = true,
+
+	-- mystical_agriculture
+	["mystical_agriculture:dirtstep_6"] = true,
+	["mystical_agriculture:stonestep_6"] = true,
+	["mystical_agriculture:woodstep_6"] = true,
+	["mystical_agriculture:icestep_6"] = true,
+	["mystical_agriculture:naturestep_6"] = true,
+	["mystical_agriculture:lapis_stonestep_6"] = true,
+	["mystical_agriculture:pyrite_llumpstep_6"] = true,
+	["mystical_agriculture:silverstep_6"] = true,
+	["mystical_agriculture:mithrilstep_6"] = true,
+	["mystical_agriculture:rubberstep_6"] = true,
+	["mystical_agriculture:stainless_steelstep_6"] = true,
+	["mystical_agriculture:chromestep_6"] = true,
+	["mystical_agriculture:brassstep_6"] = true,
+	["mystical_agriculture:carbon_steelstep_6"] = true,
+	["mystical_agriculture:sulfurstep_6"] = true,
+	["mystical_agriculture:zincstep_6"] = true,
+	["mystical_agriculture:leadstep_6"] = true,
+	["mystical_agriculture:rainbow_orestep_6"] = true,
+	["mystical_agriculture:akalin_ingotstep_6"] = true,
+	["mystical_agriculture:alatro_ingotstep_6"] = true,
+	["mystical_agriculture:arol_ingotstep_6"] = true,
+	["mystical_agriculture:talinite_ingotstep_6"] = true,
+	["mystical_agriculture:amethyst_gemstep_6"] = true,
+	["mystical_agriculture:emerald_gemstep_6"] = true,
+	["mystical_agriculture:ruby_gemstep_6"] = true,
+	["mystical_agriculture:topaz_gemstep_6"] = true,
+	["mystical_agriculture:sapphire_gemstep_6"] = true,
+	["mystical_agriculture:kalite_lumpstep_6"] = true,
+	["mystical_agriculture:raw_baconstep_6"] = true,
+	["mystical_agriculture:cooked_baconstep_6"] = true,
+	["mystical_agriculture:thermesestep_6"] = true,
+	["mystical_agriculture:terumetalstep_6"] = true,
+	["mystical_agriculture:entropystep_6"] = true,
+	["mystical_agriculture:teruceramicstep_6"] = true,
+	["mystical_agriculture:terucopperstep_6"] = true,
+	["mystical_agriculture:terutinstep_6"] = true,
+	["mystical_agriculture:terusteelstep_6"] = true,
+	["mystical_agriculture:terugoldstep_6"] = true,
+	["mystical_agriculture:coreglassstep_6"] = true,
+	["mystical_agriculture:teruchalcumstep_6"] = true,
+	["mystical_agriculture:dyestep_6"] = true,
+	["mystical_agriculture:titanitestep_6"] = true,
+	["mystical_agriculture:edoylerite_barstep_6"] = true,
+	["mystical_agriculture:cobaltominite_barstep_6"] = true,
+	["mystical_agriculture:nevadaite_barstep_6"] = true,
+	["mystical_agriculture:sideronatrite_barstep_6"] = true,
+	["mystical_agriculture:lonsdaleite_crystalstep_6"] = true,
+	["mystical_agriculture:inferiumstep_6"] = true,
+	["mystical_agriculture:diamondstep_6"] = true,
+	["mystical_agriculture:mesestep_6"] = true,
+	["mystical_agriculture:tinstep_6"] = true,
+	["mystical_agriculture:copperstep_6"] = true,
+	["mystical_agriculture:bronzestep_6"] = true,
+	["mystical_agriculture:ironstep_6"] = true,
+	["mystical_agriculture:goldstep_6"] = true,
+	["mystical_agriculture:coalstep_6"] = true,
+	["mystical_agriculture:bonestep_6"] = true,
+	["mystical_agriculture:waterstep_6"] = true,
+	["mystical_agriculture:firestep_6"] = true,
+	["mystical_agriculture:step_6"] = true,
+	["mystical_agriculture:step_6"] = true,
+} 
+-- END OF HARVESTER NODES
+
+
+
+
+

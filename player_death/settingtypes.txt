@@ -1,0 +1,20 @@
+player_death.creative (Show nodes in creative inventory?) bool false
+
+player_death.load_default (Support default mod?) bool true
+
+#    Anounce Position:
+#    -   Player:  Players death position is anounced in chat to them only
+#    -   All: Players death position is anounced in chat to all players
+#    -   Off: Players death position is not announced at all
+player_death.death_position_message (Anounce position of death?) enum Player Player,All,Off
+
+#    Mode:
+#    -   Tombstone:  Players inventory is saved in a grave marker
+#    -   Drop: Players iinventory is droped on ground
+#    -   Keep: Player keeps thier inventory across respawns
+player_death.mode (What to do when a player dies) enum Tombstone Tombstone,Drop,Keep
+
+#    Show In Hud:
+#    -   Yes:  Gravemarkers are shown in hud
+#    -   No: Gravemarkers are not shown in hud
+player_death.death_show_in_hud (Show the gravemarkers in hud?) enum Yes Yes,No

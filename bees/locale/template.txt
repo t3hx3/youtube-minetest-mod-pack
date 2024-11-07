@@ -1,0 +1,21 @@
+# textdomain: bees
+Honey Extractor=
+Bees=
+Wild Bee Hive=
+Colony died, not enough flowers in area!=
+Artificial Bee Hive=
+Requires Queen bee to function=
+progress:=
+Does not have empty frame(s)=
+Queen inserted, now for the empty frames=
+Bees are aclimating=
+Empty Hive Frame=
+Filled Hive Frame=
+Honey Bottle=
+Bees Wax=
+Honey Comb=
+Queen Bee=
+Smoker=
+Grafting Tool=
+Industrial Bee Hive=
+Bees! Bees for all!=

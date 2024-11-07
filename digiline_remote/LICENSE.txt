@@ -1,0 +1,13 @@
+Licenses for Textures
+---------------------------------------
+
+DS-minetest (CC-BY-SA 3.0)
+license: https://creativecommons.org/licenses/by-sa/3.0/
+
+--------------------------------------
+
+License for code
+---------------------------------------
+
+by DS-minetest (CC0)
+license: http://creativecommons.org/publicdomain/zero/1.0/

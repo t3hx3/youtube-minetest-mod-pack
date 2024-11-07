@@ -1,0 +1,15 @@
+These functions:
+digiline_remote.send_to_node(pos, channel, msg, radius, ignore_self)
+- make ignore_self true if you send from node to avoid echos
+digiline_remote.send_to_entity(pos, channel, msg, radius, self)
+- if you send from entity make self to the entity to avoid echos
+trigger:
+_on_digiline_remote_receive()
+
+A node with this group:
+{"group:digiline_remote_receive"}
+can use this function:
+_on_digiline_remote_receive = function(pos, channel, msg)
+
+An entity can use this function:
+_on_digiline_remote_receive = function(self, channel, msg)
